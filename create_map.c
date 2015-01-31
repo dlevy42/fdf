@@ -5,72 +5,61 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: dlevy <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/01/27 13:51:49 by dlevy             #+#    #+#             */
-/*   Updated: 2015/01/28 18:05:26 by dlevy            ###   ########.fr       */
+/*   Created: 2015/01/31 12:53:05 by dlevy             #+#    #+#             */
+/*   Updated: 2015/01/31 12:53:13 by dlevy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 #include <stdio.h>
 
-void			create_map(t_list *list, t_map *map)
+t_3dpos		**fill_map(t_list *lst, t_3dpos pt)
 {
 	int		i;
-	int		j;
-	char	**line;
+	t_3dpos	**tab;
 
 	i = 0;
-	map->nblines = ft_lstlen(list);
-	map->map = (int**)malloc(sizeof(int *) * (map->nblines + 1));
-	map->dimlines = (int*)malloc(sizeof(int) * (map->nblines + 1));
-	while (list)
+	tab = (t_3dpos**)malloc(sizeof(t_3dpos*) * pt.y);
+	while(i < pt.y)
 	{
-		j = 0;
-		line = ft_strsplit(list->content, ' ');
-		(map->map)[i] = (int*)malloc(sizeof(int) * ((map->dimlines)[i] + 1));
-		while (line[j])
-		{
-			map->map[i][j] = ft_atoi(line[j]);
-			j++;
-		}
+		tab[i] = (t_3dpos*)malloc(sizeof(t_3dpos) * pt.x);
 		i++;
-		list = list->next;
-		}
+	}
+	while(lst)
+	{
+		pt = *((t_3dpos*) lst->content);
+		tab[pt.y][pt.x] = pt;
+		printf("%d;%d;%d\n", pt.x, pt.y, pt.z);
+		lst = lst->next;
+	}
+	return (tab);
 }
 
-void		print_map(t_map *map, t_env *Xlib)
+void		create_map(t_map map, int fd)
 {
 	int		i;
-	int		j;
-	int		x;
-	int		y;
-	int		len;
-	int		factor;
+	char	**tab;
+	char	*tmp;
+	t_list	*lst;
 
-	factor = 1;
-	i = 0;
-	y = 50;
-	len = 10;
-	while(i < map->nblines)
+	lst = NULL;
+	map.max.y = 0;
+
+	while(get_next_line(fd, &tmp))
 	{
-		j = 0;
-		x = 50;
-//		printf("Alive\n");
-		while (j < map->dimlines[i])
+		i = 0;
+		map.max.x = 0;
+		tab = ft_strsplit(tmp, ' ');
+		while(tab[i])
 		{
-//			printf("Alive2\n");
-			x += ((map->map[i][j]) * factor);
-			y += (map->map[i][j]) * (factor / 2);
-			if (j < map->dimlines[i] - 1)
-				draw_line(x, y, x + len, y, Xlib);
-			if(i < map->nblines - 1)
-				draw_line(x, y, x, y + len, Xlib);
-//			ft_putnbr(x);
-//			ft_putchar('\n');
-			x += 10;
-			j++;
+			map.max.z = ft_atoi(tab[i]);
+			ft_lstadd(&lst, ft_lstnew(&map.max, sizeof(t_3dpos)));
+			free(tab[i]);
+			i++;
+			map.max.x++;
 		}
-		i++;
-		y += 10;
+		map.max.y++;
 	}
+	map.map = fill_map(lst, map.max);
+	close(fd);
 }

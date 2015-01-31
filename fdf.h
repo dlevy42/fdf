@@ -6,7 +6,7 @@
 /*   By: dlevy <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/24 12:41:40 by dlevy             #+#    #+#             */
-/*   Updated: 2015/01/27 19:05:29 by dlevy            ###   ########.fr       */
+/*   Updated: 2015/01/31 12:58:19 by dlevy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,13 @@
 
 # define BUF_SIZE 10
 
+typedef struct	s_3dpos
+{
+	int			x;
+	int			y;
+	int			z;
+}				t_3dpos;
+
 typedef struct s_env
 {
 	void	*win;
@@ -32,23 +39,14 @@ typedef struct s_env
 	int		e2;
 }			t_env;
 
-typedef	struct s_point
-{
-	int		x;
-	int		y;
-	int		z;
-	int		color;
-}			t_point;
-
 typedef struct s_map
 {
-	int		**map;
-	int		nblines;
-	int		*dimlines;
-}			t_map;
+	t_3dpos		**map;
+	t_3dpos		max;
+}				t_map;
 
 void		draw_line(int x0, int y0, int x1, int y1, t_env *c);
-void		create_map(t_list *list, t_map *map);
+void		create_map(t_map map, int fd);
 void		print_map(t_map *map, t_env *Xlib);
 
 #endif

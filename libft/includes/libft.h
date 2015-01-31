@@ -6,7 +6,7 @@
 /*   By: dlevy <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/20 16:51:23 by dlevy             #+#    #+#             */
-/*   Updated: 2015/01/23 11:51:37 by dlevy            ###   ########.fr       */
+/*   Updated: 2015/01/31 13:04:35 by dlevy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ void				ft_putendl_fd(char const *s, int fd);
 void				ft_putnbr_fd(int n, int fd);
 int					ft_recursive_power(int nb, int power);
 char				**ft_strsplit(char const *s, char c);
-t_list				*ft_lstnew(char const *content, int content_size);
+t_list				*ft_lstnew(const void *content, size_t content_size);
 void				ft_lstdelone(t_list **alst, void (*del)(void *, size_t));
 void				ft_lstdel(t_list **alst, void (*del)(void *, size_t));
 void				ft_lstadd(t_list **alst, t_list *new);

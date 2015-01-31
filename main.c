@@ -6,7 +6,7 @@
 /*   By: dlevy <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/20 14:44:26 by dlevy             #+#    #+#             */
-/*   Updated: 2015/01/31 12:50:17 by dlevy            ###   ########.fr       */
+/*   Updated: 2015/01/27 19:05:19 by dlevy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,9 @@
 int			main(int argc,char **argv)
 {
 	int		fd;
-	char	*line;
-	t_list	*list;
-	t_list	*tmp;
 	t_env	e;
 	t_map	map;
 
-	line = NULL;
 	e.mlx = mlx_init();
 	e.win = mlx_new_window(e.mlx, 420, 420, "fdf");
 	if (argc != 2)
@@ -35,17 +31,8 @@ int			main(int argc,char **argv)
 		ft_putstr("open fail\n");
 		return(0);
 	}
-	while(get_next_line(fd, &line) > 0)
-	{
-		ft_lstadd_back(&list, ft_lstnew(line, ft_strlen(line) + 1));
-		free(line);
-	}
-	tmp = list; 
-	create_map(tmp, &map);
-	while (1)
-		print_map(&map, &e);
-	//test
-	//mlx_loop(e.mlx);
-//	close(fd);
+	create_map(map, fd);
+//	print_map(&map, &e);
+	mlx_loop(e.mlx);
 	return(0);
 }
