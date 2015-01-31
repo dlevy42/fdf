@@ -6,7 +6,7 @@
 /*   By: dlevy <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/20 14:44:26 by dlevy             #+#    #+#             */
-/*   Updated: 2015/01/27 19:05:19 by dlevy            ###   ########.fr       */
+/*   Updated: 2015/01/31 12:48:01 by dlevy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ int			main(int argc,char **argv)
 		free(line);
 	}
 	tmp = list; 
-//	ft_putlist(list);
 	create_map(tmp, &map);
 	while (1)
 		print_map(&map, &e);
