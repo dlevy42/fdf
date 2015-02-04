@@ -6,30 +6,28 @@
 /*   By: dlevy <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/31 12:53:05 by dlevy             #+#    #+#             */
-/*   Updated: 2015/01/31 12:53:13 by dlevy            ###   ########.fr       */
+/*   Updated: 2015/02/04 14:58:58 by dlevy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-#include <stdio.h>
 
 t_3dpos		**fill_map(t_list *lst, t_3dpos pt)
 {
-	int		i;
-	t_3dpos	**tab;
+	int			i;
+	t_3dpos		**tab;
 
 	i = 0;
 	tab = (t_3dpos**)malloc(sizeof(t_3dpos*) * pt.y);
-	while(i < pt.y)
+	while (i < pt.y)
 	{
 		tab[i] = (t_3dpos*)malloc(sizeof(t_3dpos) * pt.x);
 		i++;
 	}
-	while(lst)
+	while (lst)
 	{
-		pt = *((t_3dpos*) lst->content);
+		pt = *((t_3dpos*)lst->content);
 		tab[pt.y][pt.x] = pt;
-		printf("%d;%d;%d\n", pt.x, pt.y, pt.z);
 		lst = lst->next;
 	}
 	return (tab);
@@ -44,13 +42,12 @@ void		create_map(t_map map, int fd)
 
 	lst = NULL;
 	map.max.y = 0;
-
-	while(get_next_line(fd, &tmp))
+	while (get_next_line(fd, &tmp))
 	{
 		i = 0;
 		map.max.x = 0;
 		tab = ft_strsplit(tmp, ' ');
-		while(tab[i])
+		while (tab[i])
 		{
 			map.max.z = ft_atoi(tab[i]);
 			ft_lstadd(&lst, ft_lstnew(&map.max, sizeof(t_3dpos)));

@@ -6,7 +6,7 @@
 /*   By: dlevy <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/23 11:40:45 by dlevy             #+#    #+#             */
-/*   Updated: 2015/01/23 11:42:07 by dlevy            ###   ########.fr       */
+/*   Updated: 2015/02/04 14:35:37 by dlevy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int		ft_lstlen(t_list *list)
 	int		ret;
 
 	ret = 0;
-	while(!(list == NULL))
+	while (!(list == NULL))
 	{
 		list = list->next;
 		ret++;

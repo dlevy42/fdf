@@ -6,7 +6,7 @@
 #    By: dlevy <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/11/28 13:51:11 by dlevy             #+#    #+#              #
-#    Updated: 2015/01/28 12:07:15 by dlevy            ###   ########.fr        #
+#    Updated: 2015/02/02 12:00:59 by dlevy            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -80,16 +80,14 @@ SRC_O	=	ft_atoi.o				\
 all: $(NAME)
 
 $(NAME): $(SRC_O)
-	ar rc $(NAME) $(SRC_O)
-	ranlib $(NAME)
-
+	@ar rc $(NAME) $(SRC_O)
+	@ranlib $(NAME)
+	@echo "Bien ouej !" 
 %.o: %.c
-	gcc -I includes/  $(CFLAGS) -c $< -o $@
+	@gcc -I includes/  $(CFLAGS) -c $< -o $@
 
 clean:
-	rm -f $(SRC_O)
-
+	@rm -f $(SRC_O)
 fclean: clean
-	rm -f $(NAME)
-
+	@rm -f $(NAME)
 re: fclean all
