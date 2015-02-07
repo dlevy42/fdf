@@ -6,12 +6,12 @@
 #    By: dlevy <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/12/24 13:01:50 by dlevy             #+#    #+#              #
-#    Updated: 2015/02/04 15:02:33 by dlevy            ###   ########.fr        #
+#    Updated: 2015/02/05 15:04:30 by dlevy            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	=	fdf
-SRC		=	main.c create_map.c draw_line.c
+SRC		=	main.c create_map.c draw_line.c print_map.c
 OBJ		=	$(SRC:.c=.o)
 HDR		=	libft/includes/
 MLX		=	-L/usr/X11/lib -lmlx -lXext -lX11

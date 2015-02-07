@@ -6,7 +6,7 @@
 /*   By: dlevy <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/24 12:41:40 by dlevy             #+#    #+#             */
-/*   Updated: 2015/02/04 15:02:10 by dlevy            ###   ########.fr       */
+/*   Updated: 2015/02/05 19:00:44 by dlevy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,6 @@ typedef struct	s_env
 {
 	void		*win;
 	void		*mlx;
-	int			sx;
-	int			sy;
-	int			dx;
-	int			dy;
-	int			err;
-	int			e2;
 }				t_env;
 
 typedef struct	s_map
@@ -51,11 +45,20 @@ typedef struct	s_line
 	int			y0;
 	int			x1;
 	int			y1;
+	int			sx;
+	int			sy;
+	int			dx;
+	int			dy;
+	int			err;
+	int			e2;
+	int			x;
+	int			y;
+	int			len;
 }				t_line;
 
 void			draw_line(t_line *d, t_env *c);
 void			create_map(t_map map, int fd);
-//void			print_map(t_map *map, t_env *lib);
+void			print_map(t_map *map, t_env *lib);
 t_3dpos			**fil_map(t_list *lst, t_3dpos pt);
 
 #endif
