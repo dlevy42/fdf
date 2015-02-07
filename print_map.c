@@ -6,7 +6,7 @@
 /*   By: dlevy <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/31 13:18:15 by dlevy             #+#    #+#             */
-/*   Updated: 2015/02/05 19:01:13 by dlevy            ###   ########.fr       */
+/*   Updated: 2015/02/07 12:43:21 by dlevy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,11 @@ void		print_map(t_map *map, t_env *lib)
 	{
 		j = 0;
 		pts->x = 50;
-		while (j < map->max.x[i])
+		while (j < map->max.x[&i])
 		{
 			pts->x += ((map->map[i][j]) * factor);
 			pts->y += (map->map[i][j]) * (factor / 2);
-			if (j < map->max.x[i] - 1)
+			if (j < map->max.x[&i] - 1)
 				draw_line(pts, lib);
 			if (i < map->max.y - 1)
 				draw_line(pts, lib);
