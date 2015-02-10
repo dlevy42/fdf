@@ -3,15 +3,15 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: dlevy <marvin@42.fr>                       +#+  +:+       +#+         #
+#    By: dlevy <dlevy@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2014/12/24 13:01:50 by dlevy             #+#    #+#              #
-#    Updated: 2015/02/05 15:04:30 by dlevy            ###   ########.fr        #
+#    Created: 2015/02/09 17:49:43 by dlevy             #+#    #+#              #
+#    Updated: 2015/02/09 18:46:30 by dlevy            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	=	fdf
-SRC		=	main.c create_map.c draw_line.c print_map.c
+SRC		=	main.c create_map.c mod_line.c
 OBJ		=	$(SRC:.c=.o)
 HDR		=	libft/includes/
 MLX		=	-L/usr/X11/lib -lmlx -lXext -lX11

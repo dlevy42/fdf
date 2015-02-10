@@ -1,30 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   event.c                                            :+:      :+:    :+:   */
+/*   mod_line.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dlevy <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: dlevy <dlevy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/01/23 14:00:11 by dlevy             #+#    #+#             */
-/*   Updated: 2015/01/26 12:30:08 by dlevy            ###   ########.fr       */
+/*   Created: 2015/02/09 18:35:37 by dlevy             #+#    #+#             */
+/*   Updated: 2015/02/09 19:39:32 by dlevy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include	<stdlib.h>
-#include	"fdf.h"
+#include "fdf.h"
 
-int		event(t_env *e)
+void	mod_line(char *line)
 {
-	int	keycode;
+	int	i;
 
-	keycode = 0;
-	// //draw(e->mlx, e->win);
-	if (keycode == 65307)
-		exit(0);
-	return (0);
-	
+	i = 0;
+	while (line[i])
+	{
+		if (ft_isdigit(line[i]) == 1)
+			i++;
+		else if (line[i] == '-')
+			i++;
+		else
+			line[i] = ' ';
+	}
 }
-
-/*int	mousse_hook(int button, int x, int y, t_env *e)
-{	
-}*/

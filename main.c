@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dlevy <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: dlevy <dlevy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/01/20 14:44:26 by dlevy             #+#    #+#             */
-/*   Updated: 2015/02/04 15:01:51 by dlevy            ###   ########.fr       */
+/*   Created: 2015/02/09 17:48:34 by dlevy             #+#    #+#             */
+/*   Updated: 2015/02/09 19:44:17 by dlevy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,7 @@
 
 int		main(int argc, char **argv)
 {
-	int		fd;
-	t_env	e;
-	t_map	map;
+	int fd;
 
 	e.mlx = mlx_init();
 	e.win = mlx_new_window(e.mlx, 420, 420, "fdf");
@@ -31,8 +29,6 @@ int		main(int argc, char **argv)
 		ft_putstr("open fail\n");
 		return (0);
 	}
-	create_map(map, fd);
-	//print_map(&map, &e);
-	mlx_loop(e.mlx);
+	create_map(fd, argv);
 	return (0);
 }
