@@ -1,32 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_put_3d_map.c                                    :+:      :+:    :+:   */
+/*   ft_3d_to_2d.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dlevy <dlevy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/02/10 17:50:45 by dlevy             #+#    #+#             */
-/*   Updated: 2015/02/11 17:55:11 by dlevy            ###   ########.fr       */
+/*   Created: 2015/02/11 15:59:48 by dlevy             #+#    #+#             */
+/*   Updated: 2015/02/11 17:55:10 by dlevy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void	ft_put_3d_map(t_map *map)
+int		ft_3d_to_2d(t_3dpos po1)
 {
-	int		x;
-	int		y;
+	int	p1;
 
-	y = 0;
-	while (y < (map->max.y - 1))
-	{
-		x = 0;
-		while (x < (map->max.x - 1))
-		{
-			ft_3d_line(map->map[y][x], map->map[y][x + 1]);
-			ft_3d_line(map->map[y][x], map->map[y + 1][x]);
-			x++;
-		}
-		y++;
-	}
+	p1 = po1.x - po1.y;
+	p1 = po1.z + (po1.x) + (po1.y);
+	return (p1);
 }

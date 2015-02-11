@@ -6,7 +6,7 @@
 #    By: dlevy <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/12/24 13:01:50 by dlevy             #+#    #+#              #
-#    Updated: 2015/02/10 19:12:06 by dlevy            ###   ########.fr        #
+#    Updated: 2015/02/11 17:04:06 by dlevy            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,9 @@ NAME	=	fdf
 SRC		=	main.c\
 			create_map.c\
 			draw_line.c\
-			ft_put_3d_map.c
+			ft_put_3d_map.c\
+			ft_3d_to_2d.c\
+			ft_3d_line.c
 OBJ		=	$(SRC:.c=.o)
 HDR		=	libft/includes/
 MLX		=	-L/usr/X11/lib -lmlx -lXext -lX11

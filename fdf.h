@@ -6,7 +6,7 @@
 /*   By: dlevy <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/24 12:41:40 by dlevy             #+#    #+#             */
-/*   Updated: 2015/02/10 19:09:15 by dlevy            ###   ########.fr       */
+/*   Updated: 2015/02/11 17:55:13 by dlevy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ typedef struct	s_line
 void			draw_line(t_line *d, t_env *c);
 void			create_map(t_map map, int fd);
 void			ft_put_3d_map(t_map *map);
-//void			ft_3d_line(t_3dpos pos1, t_3dpos pos2);
-t_3dpos			**fil_map(t_list *lst, t_3dpos pt);
+void			ft_3d_line(t_3dpos pos1, t_3dpos pos2);
+int				ft_3d_to_2d(t_3dpos po1);
 
 #endif
