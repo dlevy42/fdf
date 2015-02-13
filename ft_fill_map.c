@@ -1,38 +1,53 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_fill_map.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dlevy <dlevy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/02/09 17:48:34 by dlevy             #+#    #+#             */
-/*   Updated: 2015/02/13 17:06:30 by dlevy            ###   ########.fr       */
+/*   Created: 2015/02/09 19:39:43 by dlevy             #+#    #+#             */
+/*   Updated: 2015/02/13 16:52:34 by dlevy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-int		main(int argc, char **argv)
+int		count_line(char **argv)
 {
+	int		j;
 	int		fd;
-	t_env	e;
+	char	*line;
 
-	e.mlx = mlx_init();
-	e.win = mlx_new_window(e.mlx, 420, 420, "fdf");
-	if (argc != 2)
-	{
-		ft_putstr("not enough arg\n");
-		return (0);
-	}
+	j = 0;
 	fd = open(argv[1], O_RDONLY);
-	if (fd == -1)
+	while (get_next_line(fd, &line) > 0)
+		j++;
+	return (j);
+}
+
+int		count_char(char **str)
+{
+	int		i;
+
+	i = 0;
+	while(str[i] != '\0')
+		i++;
+	return (i);
+}
+
+void	ft_fill_map(int **tab_int, char **tab_c)
+{
+	static int		i;
+	int		j;
+	int		nb;
+
+	j = 0;
+	nb = count_char(tab_c);
+	tab_int[i] = (int *)malloc(sizeof(int) * nb);
+	while(j <= nb - 1)
 	{
-		ft_putstr("open fail\n");
-		return (0);
+		tab_int[i][j] = ft_atoi(tab_c[j]);
+		j++;
 	}
-	create_map(fd, argv);
-	mlx_key_hook(e.win, key_hook, &e);
-	//mlx_expose_hook(e.win, expose_hook, &e);
-	mlx_loop(e.mlx);
-	return (0);
+	i++;
 }

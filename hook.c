@@ -1,22 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_3d_to_2d.c                                      :+:      :+:    :+:   */
+/*   hook.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dlevy <dlevy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/02/11 15:59:48 by dlevy             #+#    #+#             */
-/*   Updated: 2015/02/12 09:36:51 by dlevy            ###   ########.fr       */
+/*   Created: 2015/02/13 15:34:43 by dlevy             #+#    #+#             */
+/*   Updated: 2015/02/13 17:06:27 by dlevy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-int		ft_3d_to_2d(t_3dpos po1)
+int		key_hook(int	keycode)
 {
-	int	p1;
-
-	p1 = po1.x - po1.y;
-	p1 = po1.z + (po1.x) + (po1.y);
-	return (p1);
+	if (keycode == 65307)
+		exit (0);
+	return (0);
 }
+
+/*int		expose_hook(t_env *e)
+{
+	draw_line(e->mlx, e->win);
+	return (0);
+}
+*/

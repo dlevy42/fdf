@@ -3,20 +3,20 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: dlevy <marvin@42.fr>                       +#+  +:+       +#+         #
+#    By: dlevy <dlevy@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2014/12/24 13:01:50 by dlevy             #+#    #+#              #
-#    Updated: 2015/02/11 17:04:06 by dlevy            ###   ########.fr        #
+#    Created: 2015/02/09 17:49:43 by dlevy             #+#    #+#              #
+#    Updated: 2015/02/13 17:23:37 by dlevy            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	=	fdf
 SRC		=	main.c\
 			create_map.c\
-			draw_line.c\
-			ft_put_3d_map.c\
-			ft_3d_to_2d.c\
-			ft_3d_line.c
+			mod_line.c\
+			ft_fill_map.c\
+			hook.c\
+			draw.c
 OBJ		=	$(SRC:.c=.o)
 HDR		=	libft/includes/
 MLX		=	-L/usr/X11/lib -lmlx -lXext -lX11
@@ -31,6 +31,7 @@ all: $(NAME)
 $(NAME): $(OBJ)
 	@make -C libft/ fclean && make -C libft/ && $(CC) $(FLAGS) $(MLX) -o $(NAME)\
 		$(OBJ) libft/libft.a -I /usr/X11/include/
+		@echo "Fdf compile !" 
 
 clean:
 	@rm -f $(OBJ)

@@ -82,7 +82,7 @@ all: $(NAME)
 $(NAME): $(SRC_O)
 	@ar rc $(NAME) $(SRC_O)
 	@ranlib $(NAME)
-	@echo "Bien ouej !" 
+	@echo "Libft compile !" 
 %.o: %.c
 	@gcc -I includes/  $(CFLAGS) -c $< -o $@
 
