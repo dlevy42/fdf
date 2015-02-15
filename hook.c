@@ -19,9 +19,8 @@ int		key_hook(int	keycode)
 	return (0);
 }
 
-/*int		expose_hook(t_env *e)
+int		expose_hook(t_env *c)
 {
-	draw_line(e->mlx, e->win);
+	draw_line(c->mlx, c->win);
 	return (0);
 }
-*/

@@ -6,7 +6,7 @@
 /*   By: dlevy <dlevy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/09 17:48:34 by dlevy             #+#    #+#             */
-/*   Updated: 2015/02/13 17:06:30 by dlevy            ###   ########.fr       */
+/*   Updated: 2015/02/15 11:03:55 by dlevy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int		main(int argc, char **argv)
 	}
 	create_map(fd, argv);
 	mlx_key_hook(e.win, key_hook, &e);
-	//mlx_expose_hook(e.win, expose_hook, &e);
+	mlx_expose_hook(e.win, expose_hook, &e);
 	mlx_loop(e.mlx);
 	return (0);
 }

@@ -26,13 +26,30 @@ typedef struct	s_env
 	void		*mlx;
 }				t_env;
 
+typedef struct	s_line
+{
+	int			x0;
+	int			y0;
+	int			x1;
+	int			y1;
+	int			sx;
+	int			sy;
+	int			dx;
+	int			dy;
+	int			err;
+	int			e2;
+	int			x;
+	int			y;
+	int			len;
+}				t_line;
+
 void	mod_line(char *line);
 void	create_map(int fd, char **argv);
 int		count_line(char **argv);
 int		count_char(char **str);
 void	ft_fill_map(int **tab_int, char **tab_c);
-//int		expose_hook(t_env *e);
 int		key_hook(int keycode);
-void	draw(void *mlx, void *win);
+int		expose_hook(t_env *c);
+void	draw_line(t_line *d, t_env *e);
 
 #endif

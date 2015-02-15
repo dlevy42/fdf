@@ -16,7 +16,7 @@ SRC		=	main.c\
 			mod_line.c\
 			ft_fill_map.c\
 			hook.c\
-			draw.c
+			draw_line.c
 OBJ		=	$(SRC:.c=.o)
 HDR		=	libft/includes/
 MLX		=	-L/usr/X11/lib -lmlx -lXext -lX11
