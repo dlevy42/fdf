@@ -3,20 +3,15 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: dlevy <dlevy@student.42.fr>                +#+  +:+       +#+         #
+#    By: bfrimin <bfrimin@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2015/02/09 17:49:43 by dlevy             #+#    #+#              #
-#    Updated: 2015/02/13 17:23:37 by dlevy            ###   ########.fr        #
+#    Created: 2014/11/13 19:04:09 by bfrimin           #+#    #+#              #
+#    Updated: 2015/02/16 17:18:49 by bfrimin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
-
 NAME	=	fdf
-SRC		=	main.c\
-			create_map.c\
-			mod_line.c\
-			ft_fill_map.c\
-			hook.c\
-			draw_line.c
+SRC		=	main.c \
+			stock.c
 OBJ		=	$(SRC:.c=.o)
 HDR		=	libft/includes/
 MLX		=	-L/usr/X11/lib -lmlx -lXext -lX11
@@ -24,12 +19,12 @@ FLAGS	=	-Wall -Wextra -Werror
 CC		=	gcc
 
 %.o: %.c
-		@$(CC) $(FLAGS) -I . -I /usr/X11/include/ -o $@ -c $?
+		@$(CC) -I ./includes -I /usr/X11/include/ -o $@ -c $?
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	@make -C libft/ fclean && make -C libft/ && $(CC) $(FLAGS) $(MLX) -o $(NAME)\
+	@make -C libft/ fclean && make -C libft/ && $(CC) $(MLX) -o $(NAME)\
 		$(OBJ) libft/libft.a -I /usr/X11/include/
 		@echo "Fdf compile !" 
 
