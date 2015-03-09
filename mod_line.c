@@ -1,18 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   mod_line.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dlevy <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: dlevy <dlevy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/18 11:23:50 by dlevy             #+#    #+#             */
-/*   Updated: 2014/12/03 15:54:34 by dlevy            ###   ########.fr       */
+/*   Created: 2015/02/09 18:35:37 by dlevy             #+#    #+#             */
+/*   Updated: 2015/02/13 13:23:25 by dlevy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "fdf.h"
 
-void	ft_putnbr(int n)
+void	mod_line(char *line)
 {
-	ft_putstr(ft_itoa(n));
+	int	i;
+
+	i = 0;
+	while (line[i])
+	{
+		if (line[i] >= '0' && line[i] <= '9')
+			i++;
+		else if (line[i] == '-')
+			i++;
+		else
+		{
+			line[i] = ' ';
+			i++;
+		}
+	}
 }
