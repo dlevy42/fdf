@@ -1,31 +1,19 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: bfrimin <bfrimin@student.42.fr>            +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2014/11/13 19:04:09 by bfrimin           #+#    #+#              #
-#    Updated: 2015/02/16 17:18:49 by bfrimin          ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
 NAME	=	fdf
-SRC		=	main.c \
-			stock.c
-OBJ		=	$(SRC:.c=.o)
-HDR		=	libft/includes/
-MLX		=	-L/usr/X11/lib -lmlx -lXext -lX11
+SRC	=	main.c
+OBJ	=	$(SRC:.c=.o)
+HDR	=	libft/includes/
+MLX	=	-I includes libft/libft.a  -Lminilibx -lmlx -framework OpenGL -framework AppKit -I minilibx/
 FLAGS	=	-Wall -Wextra -Werror
-CC		=	gcc
+CC	=	gcc
 
 %.o: %.c
-		@$(CC) -I ./includes -I /usr/X11/include/ -o $@ -c $?
+	@$(CC) -I ./includes -I /usr/X11/include/ -o $@ -c $?
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	@make -C libft/ fclean && make -C libft/ && $(CC) $(MLX) -o $(NAME)\
-		$(OBJ) libft/libft.a -I /usr/X11/include/
+	   @make -C libft/ fclean && make -C libft/ && $(CC) $(MLX) -o $(NAME)\
+		$(OBJ) libft/libft.a -I /usr/X11/include/ -ggdb
 		@echo "Fdf compile !" 
 
 clean:
